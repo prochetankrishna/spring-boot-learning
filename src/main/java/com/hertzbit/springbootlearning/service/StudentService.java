@@ -68,9 +68,10 @@ public class StudentService {
         if (studentRequest.getStudentFirstName() != null && studentRequest.getStudentLastName() != null) {
             if (!studentRequest.getStudentFirstName().isEmpty()) {
                 if (!studentRequest.getStudentLastName().isEmpty()) {
-                    studentRequest.setStudentId(String.valueOf(studentCounter.incrementAndGet()));
-                    this.studentLocalDB.put(studentRequest.getStudentId(), studentRequest);
-                    return studentRequest;
+                    //studentRequest.setStudentId(String.valueOf(studentCounter.incrementAndGet()));
+                    //this.studentLocalDB.put(studentRequest.getStudentId(), studentRequest);
+                    //return studentRequest;
+                    return this.studentRepository.save(studentRequest);
                 } else {
                     throw new StudentBadRequestException("Last Name cannot be empty string.");
                 }
